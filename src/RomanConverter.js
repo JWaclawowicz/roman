@@ -6,7 +6,10 @@ class RomanConverter extends React.Component {
     };
     handleChange = (event) => {
         const arabic = event.target.value;
-        let roman = "I";
+        let roman = "none";
+        if (arabic == 1) {
+            roman = "I";
+        }
         if (arabic == 5) {
             roman = "V";
         }
