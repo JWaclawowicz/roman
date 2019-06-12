@@ -1,15 +1,5 @@
 import React from "react";
-
-function toRoman(arabic) {
-    let roman = "none";
-    if (arabic == 1) {
-        roman = "I";
-    }
-    if (arabic == 5) {
-        roman = "V";
-    }
-    return roman;
-}
+import toRoman from "./toRoman";
 
 class RomanConverter extends React.Component {
     state = {
