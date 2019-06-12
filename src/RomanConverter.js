@@ -1,19 +1,23 @@
 import React from "react";
 
+function toRoman(arabic) {
+    let roman = "none";
+    if (arabic == 1) {
+        roman = "I";
+    }
+    if (arabic == 5) {
+        roman = "V";
+    }
+    return roman;
+}
+
 class RomanConverter extends React.Component {
     state = {
         roman: null
     };
     handleChange = (event) => {
         const arabic = event.target.value;
-        let roman = "none";
-        if (arabic == 1) {
-            roman = "I";
-        }
-        if (arabic == 5) {
-            roman = "V";
-        }
-        this.setState({ roman });
+        this.setState({ roman: toRoman(arabic) });
     }
     render() {
         return (
