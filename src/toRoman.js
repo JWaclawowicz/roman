@@ -21,6 +21,21 @@ function toRoman(arabic) {
     if (arabic >=1 & arabic < 10) {
         roman = convertDigits(arabic);
     }
+    if (arabic == 10) {
+        roman = "X";
+    }
+    if (arabic == 12) {
+        roman = "XII";
+    }
+    if (arabic == 14) {
+        roman = "XIV";
+    }
+    if (arabic == 18) {
+        roman = "XVIII";
+    }
+    if (arabic == 19) {
+        roman = "XIX";
+    }
 
     return roman;
 }

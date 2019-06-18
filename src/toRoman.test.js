@@ -7,7 +7,12 @@ describe('toRoman()', () => {
         [4, "IV"],
         [5, "V"],
         [6, "VI"],
-        [9, "IX"]
+        [9, "IX"],
+        [10, "X"],
+        [12, "XII"],
+        [14, "XIV"],
+        [18, "XVIII"],
+        [19, "XIX"]
     ])('converts %d to %s', (arabic, expectedRoman) => {
         expect(toRoman(arabic)).toEqual(expectedRoman);
     });
