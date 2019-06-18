@@ -12,7 +12,13 @@ describe('toRoman()', () => {
         [12, "XII"],
         [14, "XIV"],
         [18, "XVIII"],
-        [19, "XIX"]
+        [19, "XIX"],
+        [20, "XX"],
+        [36, "XXXVI"],
+        [43, "XLIII"],
+        [50, "L"],
+        [72, "LXXII"],
+        [99, "XCIX"]
     ])('converts %d to %s', (arabic, expectedRoman) => {
         expect(toRoman(arabic)).toEqual(expectedRoman);
     });

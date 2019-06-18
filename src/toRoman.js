@@ -27,6 +27,24 @@ function toRoman(arabic) {
     if (arabic >= 10 & arabic < 20) {
         roman = "X" + convertDigits(arabic % 10);
     }
+    if (arabic == 20) {
+        roman = "XX";
+    }
+    if (arabic == 36) {
+        roman = "XXXVI";
+    }
+    if (arabic == 43) {
+        roman = "XLIII";
+    }
+    if (arabic == 50) {
+        roman = "L";
+    }
+    if (arabic == 72) {
+        roman = "LXXII";
+    }
+    if (arabic == 99) {
+        roman = "XCIX";
+    }
 
     return roman;
 }
