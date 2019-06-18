@@ -1,6 +1,6 @@
 function toRoman(arabic) {
     let roman = "";
-    const arrayOfRoman = ["I", "V", "X"];
+    const arrayOfRoman = ["I", "V", "X", "L", "C"];
 
     function convertDigits(arabic) {
         if (arabic >= 1 & arabic < 4) {
@@ -18,32 +18,31 @@ function toRoman(arabic) {
         return roman;
     }    
 
+    function convertTens(arabic) {
+        let roman = "";
+        if (arabic >= 10 & arabic < 40) {
+            roman = arrayOfRoman[2].padEnd(Math.floor(arabic / 10), arrayOfRoman[2]);
+        }
+        if (arabic >= 40 & arabic < 50) {
+            roman = arrayOfRoman[2] + arrayOfRoman[3];
+        }
+        if (arabic >= 50 & arabic < 90) {
+            roman = arrayOfRoman[3].padEnd(Math.floor(arabic / 10) - 4, arrayOfRoman[2]);
+        }
+        if (arabic >= 90 & arabic < 100) {
+            roman = arrayOfRoman[2] + arrayOfRoman[4];
+        }   
+        return roman;
+    }    
+
     if (arabic == 0) {
         roman = "none";
     }
     if (arabic >=1 & arabic < 10) {
         roman = convertDigits(arabic);
     }
-    if (arabic >= 10 & arabic < 20) {
-        roman = "X" + convertDigits(arabic % 10);
-    }
-    if (arabic == 20) {
-        roman = "XX";
-    }
-    if (arabic == 36) {
-        roman = "XXXVI";
-    }
-    if (arabic == 43) {
-        roman = "XLIII";
-    }
-    if (arabic == 50) {
-        roman = "L";
-    }
-    if (arabic == 72) {
-        roman = "LXXII";
-    }
-    if (arabic == 99) {
-        roman = "XCIX";
+    if (arabic >= 10 & arabic < 100) {
+        roman = convertTens(arabic) + convertDigits(arabic % 10);
     }
 
     return roman;
