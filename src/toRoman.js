@@ -1,6 +1,6 @@
 function toRoman(arabic) {
     let roman = "";
-    const arrayOfRoman = ["I", "V", "X", "L", "C"];
+    const arrayOfRoman = ["I", "V", "X", "L", "C", "D", "M"];
 
     function convertDigits(arabic) {
         if (arabic >= 1 & arabic < 4) {
@@ -35,6 +35,23 @@ function toRoman(arabic) {
         return roman;
     }    
 
+    function convertHundreds(arabic) {
+        let roman = "";
+        if (arabic >= 100 & arabic < 400) {
+            roman = arrayOfRoman[4].padEnd(Math.floor(arabic / 100), arrayOfRoman[4]);
+        }
+        if (arabic >= 400 & arabic < 500) {
+            roman = arrayOfRoman[4] + arrayOfRoman[5];
+        }
+        if (arabic >= 500 & arabic < 900) {
+            roman = arrayOfRoman[5].padEnd(Math.floor(arabic / 100) - 4, arrayOfRoman[4]);
+        }
+        if (arabic >= 900 & arabic < 1000) {
+            roman = arrayOfRoman[4] + arrayOfRoman[6];
+        }   
+        return roman;
+    }    
+
     if (arabic == 0) {
         roman = "none";
     }
@@ -44,22 +61,10 @@ function toRoman(arabic) {
     if (arabic >= 10 & arabic < 100) {
         roman = convertTens(arabic) + convertDigits(arabic % 10);
     }
-    if (arabic == 100) {
-        roman = "C";
+    if (arabic >= 100 & arabic < 1000) {
+        roman = convertHundreds(arabic) + convertTens(arabic % 100) + convertDigits(arabic % 10);
     }
-    if (arabic == 323) {
-        roman = "CCCXXIII";
-    }
-    if (arabic == 410) {
-        roman = "CDX";
-    }
-    if (arabic == 500) {
-        roman = "D";
-    }
-    if (arabic == 999) {
-        roman = "CMXCIX";
-    }
-
+ 
     return roman;
 }
 
