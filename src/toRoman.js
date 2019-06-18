@@ -1,5 +1,5 @@
 function toRoman(arabic) {
-    let roman = "none";
+    let roman = "";
     const arrayOfRoman = ["I", "V", "X"];
 
     function convertDigits(arabic) {
@@ -18,23 +18,14 @@ function toRoman(arabic) {
         return roman;
     }    
 
+    if (arabic == 0) {
+        roman = "none";
+    }
     if (arabic >=1 & arabic < 10) {
         roman = convertDigits(arabic);
     }
-    if (arabic == 10) {
-        roman = "X";
-    }
-    if (arabic == 12) {
-        roman = "XII";
-    }
-    if (arabic == 14) {
-        roman = "XIV";
-    }
-    if (arabic == 18) {
-        roman = "XVIII";
-    }
-    if (arabic == 19) {
-        roman = "XIX";
+    if (arabic >= 10 & arabic < 20) {
+        roman = "X" + convertDigits(arabic % 10);
     }
 
     return roman;
