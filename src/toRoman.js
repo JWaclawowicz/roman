@@ -52,6 +52,14 @@ function toRoman(arabic) {
         return roman;
     }    
 
+    function convertThousands(arabic) {
+        let roman = "";
+        if (arabic >= 1000 & arabic < 4000) {
+            roman = arrayOfRoman[6].padEnd(Math.floor(arabic / 1000), arrayOfRoman[6]);
+        }
+        return roman;
+    }    
+
     if (arabic == 0) {
         roman = "none";
     }
@@ -64,11 +72,8 @@ function toRoman(arabic) {
     if (arabic >= 100 & arabic < 1000) {
         roman = convertHundreds(arabic) + convertTens(arabic % 100) + convertDigits(arabic % 10);
     }
-    if (arabic == 1000) {
-        roman = "M";
-    }
-    if (arabic == 2019) {
-        roman = "MMXIX";
+    if (arabic >= 1000 & arabic < 4000) {
+        roman = convertThousands(arabic) + convertHundreds(arabic % 1000) + convertTens(arabic % 100) + convertDigits(arabic % 10);
     }
  
     return roman;
