@@ -2,62 +2,37 @@ function toRoman(arabic) {
     let roman = "";
     const arrayOfRoman = ["I", "V", "X", "L", "C", "D", "M"];
 
+    function convertOneDigitToRoman(arabic, i, x) {
+		let convertedDigit = "";
+		if (arabic >= (1 * x) & arabic < (4 * x)) {
+			convertedDigit = arrayOfRoman[i].padEnd(Math.floor(arabic / x), arrayOfRoman[i]);
+		}
+		if (arabic >= (4 * x) & arabic < (5 * x)) {
+			convertedDigit = arrayOfRoman[i] + arrayOfRoman[i+1];
+		}
+		if (arabic >= (5 * x) & arabic < (9 * x)) {
+			convertedDigit = arrayOfRoman[i+1].padEnd(Math.floor(arabic / x) - 4, arrayOfRoman[i]);
+		}
+		if (arabic >= (9 * x) & arabic < (10 * x)) {
+			convertedDigit = arrayOfRoman[i] + arrayOfRoman[i+2];
+		}
+		return convertedDigit;
+	}
+
     function convertDigits(arabic) {
-        if (arabic >= 1 & arabic < 4) {
-            roman = arrayOfRoman[0].padEnd(arabic, arrayOfRoman[0]);
-        }
-        if (arabic == 4) {
-            roman = arrayOfRoman[0] + arrayOfRoman[1];
-        }
-        if (arabic >= 5 & arabic < 9) {
-            roman = arrayOfRoman[1].padEnd(arabic - 4, arrayOfRoman[0]);
-        }
-        if (arabic == 9) {
-            roman = arrayOfRoman[0] + arrayOfRoman[2];
-        }   
-        return roman;
+        return convertOneDigitToRoman(arabic, 0, 1);
     }    
 
     function convertTens(arabic) {
-        let roman = "";
-        if (arabic >= 10 & arabic < 40) {
-            roman = arrayOfRoman[2].padEnd(Math.floor(arabic / 10), arrayOfRoman[2]);
-        }
-        if (arabic >= 40 & arabic < 50) {
-            roman = arrayOfRoman[2] + arrayOfRoman[3];
-        }
-        if (arabic >= 50 & arabic < 90) {
-            roman = arrayOfRoman[3].padEnd(Math.floor(arabic / 10) - 4, arrayOfRoman[2]);
-        }
-        if (arabic >= 90 & arabic < 100) {
-            roman = arrayOfRoman[2] + arrayOfRoman[4];
-        }   
-        return roman;
+        return convertOneDigitToRoman(arabic, 2, 10);
     }    
 
     function convertHundreds(arabic) {
-        let roman = "";
-        if (arabic >= 100 & arabic < 400) {
-            roman = arrayOfRoman[4].padEnd(Math.floor(arabic / 100), arrayOfRoman[4]);
-        }
-        if (arabic >= 400 & arabic < 500) {
-            roman = arrayOfRoman[4] + arrayOfRoman[5];
-        }
-        if (arabic >= 500 & arabic < 900) {
-            roman = arrayOfRoman[5].padEnd(Math.floor(arabic / 100) - 4, arrayOfRoman[4]);
-        }
-        if (arabic >= 900 & arabic < 1000) {
-            roman = arrayOfRoman[4] + arrayOfRoman[6];
-        }   
-        return roman;
+        return convertOneDigitToRoman(arabic, 4, 100);
     }    
 
     function convertThousands(arabic) {
-        let roman = "";
-        if (arabic >= 1000 & arabic < 4000) {
-            roman = arrayOfRoman[6].padEnd(Math.floor(arabic / 1000), arrayOfRoman[6]);
-        }
-        return roman;
+        return convertOneDigitToRoman(arabic, 6, 1000);
     }    
 
     function convertToRoman(arabic) {
