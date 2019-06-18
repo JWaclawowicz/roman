@@ -1,23 +1,27 @@
 function toRoman(arabic) {
     let roman = "none";
-    if (arabic == 1) {
-        roman = "I";
+    const arrayOfRoman = ["I", "V", "X"];
+
+    function convertDigits(arabic) {
+        if (arabic >= 1 & arabic < 4) {
+            roman = arrayOfRoman[0].padEnd(arabic, arrayOfRoman[0]);
+        }
+        if (arabic == 4) {
+            roman = arrayOfRoman[0] + arrayOfRoman[1];
+        }
+        if (arabic >= 5 & arabic < 9) {
+            roman = arrayOfRoman[1].padEnd(arabic - 4, arrayOfRoman[0]);
+        }
+        if (arabic == 9) {
+            roman = arrayOfRoman[0] + arrayOfRoman[2];
+        }   
+        return roman;
+    }    
+
+    if (arabic >=1 & arabic < 10) {
+        roman = convertDigits(arabic);
     }
-    if (arabic == 3) {
-        roman = "III";
-    }
-    if (arabic == 4) {
-        roman = "IV";
-    }
-    if (arabic == 5) {
-        roman = "V";
-    }
-    if (arabic == 6) {
-        roman = "VI";
-    }
-    if (arabic == 9) {
-        roman = "IX";
-    }
+
     return roman;
 }
 
