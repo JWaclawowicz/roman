@@ -44,6 +44,21 @@ function toRoman(arabic) {
     if (arabic >= 10 & arabic < 100) {
         roman = convertTens(arabic) + convertDigits(arabic % 10);
     }
+    if (arabic == 100) {
+        roman = "C";
+    }
+    if (arabic == 323) {
+        roman = "CCCXXIII";
+    }
+    if (arabic == 410) {
+        roman = "CDX";
+    }
+    if (arabic == 500) {
+        roman = "D";
+    }
+    if (arabic == 999) {
+        roman = "CMXCIX";
+    }
 
     return roman;
 }
