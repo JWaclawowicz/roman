@@ -3,7 +3,11 @@ import toRoman from "./toRoman";
 describe('toRoman()', () => {
     it.each([
         [1, "I"],
-        [5, "V"]
+        [3, "III"],
+        [4, "IV"],
+        [5, "V"],
+        [6, "VI"],
+        [9, "IX"]
     ])('converts %d to %s', (arabic, expectedRoman) => {
         expect(toRoman(arabic)).toEqual(expectedRoman);
     });
