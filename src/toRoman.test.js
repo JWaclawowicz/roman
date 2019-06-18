@@ -23,7 +23,9 @@ describe('toRoman()', () => {
         [323, "CCCXXIII"],
         [410, "CDX"],
         [500, "D"],
-        [999, "CMXCIX"]
+        [999, "CMXCIX"],
+        [1000, "M"],
+        [2019, "MMXIX"]
     ])('converts %d to %s', (arabic, expectedRoman) => {
         expect(toRoman(arabic)).toEqual(expectedRoman);
     });

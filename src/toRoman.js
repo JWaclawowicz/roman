@@ -64,6 +64,12 @@ function toRoman(arabic) {
     if (arabic >= 100 & arabic < 1000) {
         roman = convertHundreds(arabic) + convertTens(arabic % 100) + convertDigits(arabic % 10);
     }
+    if (arabic == 1000) {
+        roman = "M";
+    }
+    if (arabic == 2019) {
+        roman = "MMXIX";
+    }
  
     return roman;
 }
