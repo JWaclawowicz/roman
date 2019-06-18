@@ -60,20 +60,27 @@ function toRoman(arabic) {
         return roman;
     }    
 
+    function convertToRoman(arabic) {
+        let romanNumber = "";
+        if (arabic >= 1 & arabic < 10) {
+            romanNumber = convertDigits(arabic);
+        }
+        if (arabic >= 10 & arabic < 100) {
+            romanNumber = convertTens(arabic) + convertToRoman(arabic % 10);
+        }
+        if (arabic >= 100 & arabic < 1000) {
+            romanNumber = convertHundreds(arabic) + convertToRoman(arabic % 100);
+        }
+        if (arabic >= 1000 & arabic < 4000) {
+            romanNumber = convertThousands(arabic) + convertToRoman(arabic % 1000);
+        }
+        return romanNumber;
+    }
+
     if (arabic == 0) {
         roman = "none";
-    }
-    if (arabic >=1 & arabic < 10) {
-        roman = convertDigits(arabic);
-    }
-    if (arabic >= 10 & arabic < 100) {
-        roman = convertTens(arabic) + convertDigits(arabic % 10);
-    }
-    if (arabic >= 100 & arabic < 1000) {
-        roman = convertHundreds(arabic) + convertTens(arabic % 100) + convertDigits(arabic % 10);
-    }
-    if (arabic >= 1000 & arabic < 4000) {
-        roman = convertThousands(arabic) + convertHundreds(arabic % 1000) + convertTens(arabic % 100) + convertDigits(arabic % 10);
+    } else {
+        roman = convertToRoman(arabic);
     }
  
     return roman;
