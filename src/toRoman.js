@@ -4,16 +4,16 @@ function toRoman(arabic) {
 
     function convertOneDigitToRoman(arabic, i, x) {
 		let convertedDigit = "";
-		if (arabic >= (1 * x) & arabic < (4 * x)) {
+		if (arabic >= (1 * x) && arabic < (4 * x)) {
 			convertedDigit = arrayOfRoman[i].padEnd(Math.floor(arabic / x), arrayOfRoman[i]);
 		}
-		if (arabic >= (4 * x) & arabic < (5 * x)) {
+		if (arabic >= (4 * x) && arabic < (5 * x)) {
 			convertedDigit = arrayOfRoman[i] + arrayOfRoman[i+1];
 		}
-		if (arabic >= (5 * x) & arabic < (9 * x)) {
+		if (arabic >= (5 * x) && arabic < (9 * x)) {
 			convertedDigit = arrayOfRoman[i+1].padEnd(Math.floor(arabic / x) - 4, arrayOfRoman[i]);
 		}
-		if (arabic >= (9 * x) & arabic < (10 * x)) {
+		if (arabic >= (9 * x) && arabic < (10 * x)) {
 			convertedDigit = arrayOfRoman[i] + arrayOfRoman[i+2];
 		}
 		return convertedDigit;
@@ -37,16 +37,16 @@ function toRoman(arabic) {
 
     function convertToRoman(arabic) {
         let romanNumber = "";
-        if (arabic >= 1 & arabic < 10) {
+        if (arabic >= 1 && arabic < 10) {
             romanNumber = convertDigits(arabic);
         }
-        if (arabic >= 10 & arabic < 100) {
+        if (arabic >= 10 && arabic < 100) {
             romanNumber = convertTens(arabic) + convertToRoman(arabic % 10);
         }
-        if (arabic >= 100 & arabic < 1000) {
+        if (arabic >= 100 && arabic < 1000) {
             romanNumber = convertHundreds(arabic) + convertToRoman(arabic % 100);
         }
-        if (arabic >= 1000 & arabic < 4000) {
+        if (arabic >= 1000 && arabic < 4000) {
             romanNumber = convertThousands(arabic) + convertToRoman(arabic % 1000);
         }
         return romanNumber;
